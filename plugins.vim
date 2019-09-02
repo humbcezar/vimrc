@@ -19,6 +19,9 @@ Plugin 'StanAngeloff/php.vim'
 Plugin 'arnaud-lb/vim-php-namespace'
 Plugin 'ervandew/supertab'
 Plugin 'stephpy/vim-php-cs-fixer'
+Plugin 'tobyS/vmustache'
+Plugin 'tobyS/pdv'
+Plugin 'SirVer/ultisnips'
 
 call vundle#end()            " required
 filetype plugin indent on    " required

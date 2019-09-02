@@ -4,16 +4,19 @@ snippet pubf
 		${2}
 	}
 
+
 snippet prif
 	private function ${1}(${2})
 	{
 	    ${3}
 	}
 
+
 snippet fn
 	function(${1}) {
 		${2}
 	}
+
 
 snippet try
 	try {
@@ -22,11 +25,29 @@ snippet try
 		${2}
 	}
 
+
 snippet $
 	$this->
+
 
 snippet c
 	public function __construct(${1})
 	{
 		
 	}
+
+
+snippet rg
+	Route::get('${1}', '${2}');
+	
+
+snippet rp
+	Route::post('${1}', '${2}');
+	
+
+snippet ru
+	Route::put('${1}', '${2}');
+
+
+snippet rd
+	Route::delete('${1}', '${2}');

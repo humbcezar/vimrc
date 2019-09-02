@@ -54,6 +54,9 @@ let g:grep_cmd_opts = '--line-numbers --noheading'
 let g:php_cs_fixer_level = "psr2"
 nnoremap <silent><leader>p :call PhpCsFixerFixFile()<CR>
 
+"/pdv
+let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
+nnoremap <Leader>d :call pdv#DocumentWithSnip()<CR>
 
 "--Searching---"
 
