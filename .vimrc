@@ -78,6 +78,10 @@ nmap <C-L> <C-W><C-L>
 nmap <Leader>lm :!php artisan make:
 
 
+"-----PHP-macros------"
+let @a='yiw/}O$	pa = $pa;/__constructOprotected $pa;/", ' "assign protected property to class on constructor
+
+
 "---AutoCommands---"
 
 augroup autosourcing
@@ -101,4 +105,4 @@ autocmd FileType php noremap <Leader>nf :call PhpExpandClass()<CR>
 
 "----Notes----"
 " press zz to center
-" 
+" press gt or gT to change tabs 
