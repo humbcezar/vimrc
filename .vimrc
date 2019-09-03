@@ -12,10 +12,12 @@ set expandtab
 "set shellcmdflag=-ic
 set autowriteall "automatically write on switching buffers
 set complete=.,w,b,u "set auto completions
+set laststatus=2 "set statusline on
 
 "---Visuals---"
 set background=dark
 colorscheme atom-dark-256
+hi StatusLine ctermbg=black ctermfg=white
 "---Mappings---"
 
 "Make it easy to edit Vimrc file"
@@ -48,7 +50,7 @@ nmap <Leader>1 :NERDTreeToggle<cr>
 
 "/Greplace.vim
 set grepprg=ag
-let g:grep_cmd_opts = '--line-numbers --noheading --ignore-dir vendor'
+let g:grep_cmd_opts = '--line-numbers --noheading'
 
 "/Vim-php-cs-fixer
 let g:php_cs_fixer_level = "psr2"
@@ -105,6 +107,15 @@ function! IPhpExpandClass()
 endfunction
 autocmd FileType php inoremap <Leader>nf <Esc>:call IPhpExpandClass()<CR>
 autocmd FileType php noremap <Leader>nf :call PhpExpandClass()<CR>
+
+if has("autocmd")
+    augroup templates
+        autocmd BufNewFile silent! *.php if expand('%') !~ 'Test' | 0r ~/.vim/templates/skeleton.php
+        autocmd BufNewFile silent! *Test.php 0r ~/.vim/templates/skeleton_test.php
+        " parse special text in the templates after the read
+        autocmd BufNewFile * %substitute#\[:VIM_EVAL:\]\(.\{-\}\)\[:END_EVAL:\]#\=eval(submatch(1))#ge
+    augroup END
+endif
 
 "----Notes----"
 " press zz to center
