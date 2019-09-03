@@ -4,6 +4,6 @@ namespace [:VIM_EVAL:]substitute(substitute(expand('%:h:@'), '\(\<\w\+\>\)', '\u
 
 use Tests\TestCase;
 
-public class [:VIM_EVAL:]expand("%:t:r")[:END_EVAL:] extends TestCase {
+class [:VIM_EVAL:]expand("%:t:r")[:END_EVAL:] extends TestCase {
 
 }
