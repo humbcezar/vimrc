@@ -110,10 +110,12 @@ autocmd FileType php noremap <Leader>nf :call PhpExpandClass()<CR>
 
 if has("autocmd")
     augroup templates
-        autocmd BufNewFile silent! *.php if expand('%') !~ 'Test' | 0r ~/.vim/templates/skeleton.php
-        autocmd BufNewFile silent! *Test.php 0r ~/.vim/templates/skeleton_test.php
-        " parse special text in the templates after the read
+        autocmd!
+        autocmd BufNewFile *Test.php 0r ~/.vim/templates/skeleton_test.php
         autocmd BufNewFile * %substitute#\[:VIM_EVAL:\]\(.\{-\}\)\[:END_EVAL:\]#\=eval(submatch(1))#ge
+        autocmd BufNewFile *.php if expand('%') !~ 'Test' | 0r ~/.vim/templates/skeleton.php
+        autocmd BufNewFile * %substitute#\[:VIM_EVAL:\]\(.\{-\}\)\[:END_EVAL:\]#\=eval(submatch(1))#ge
+        " parse special text in the templates after the read
     augroup END
 endif
 

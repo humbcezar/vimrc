@@ -1,7 +1,6 @@
-
 <?php
 
-namespace [:VIM_EVAL:]substitute(substitute(expand('%:p:h:@'), '\(\<\w\+\>\)', '\u\1', 'g'), "\/", "\\", "g")[:END_EVAL:];
+namespace [:VIM_EVAL:]substitute(substitute(expand('%:h:@'), '\(\<\w\+\>\)', '\u\1', 'g'), "\/", "\\", "g")[:END_EVAL:];
 
 use Tests\TestCase;
 
