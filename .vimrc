@@ -38,6 +38,7 @@ imap <c-s> <Esc>:w<CR>a
 "/CtrlP
 set grepprg=ag
 let g:grep_cmd_opts = '--line-numbers --noheading'
+let g:ctrlp_show_hidden = 1
 
 nmap <c-R> :CtrlPBufTag<cr>
 nmap <Leader>r :CtrlPMRUFiles<cr>
