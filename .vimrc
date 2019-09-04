@@ -33,6 +33,7 @@ nmap <Leader>es :tabedit ~/.vim/snippets/
 imap <S-Tab> <C-d>
 nmap <c-s> :w<cr>
 imap <c-s> <Esc>:w<CR>
+
 "--Plugins---"
 "/CtrlP
 set grepprg=ag
