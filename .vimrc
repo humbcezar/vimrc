@@ -32,15 +32,15 @@ nmap <c-_> <c-^>
 nmap <Leader>es :tabedit ~/.vim/snippets/
 imap <S-Tab> <C-d>
 nmap <c-s> :w<cr>
-imap <c-s> <Esc>:w<CR>a
-
+imap <c-s> <Esc>:w<CR>
+nmap <C-b> :!php -l %<CR>
 "--Plugins---"
 "/CtrlP
 set grepprg=ag
 let g:grep_cmd_opts = '--line-numbers --noheading'
 let g:ctrlp_show_hidden = 1
 
-nmap <c-R> :CtrlPBufTag<cr>
+"nmap <c-R> :CtrlPBufTag<cr>
 nmap <Leader>r :CtrlPMRUFiles<cr>
 
 
