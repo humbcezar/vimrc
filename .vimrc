@@ -32,17 +32,26 @@ nmap <c-_> <c-^>
 nmap <Leader>es :tabedit ~/.vim/snippets/
 imap <S-Tab> <C-d>
 nmap <c-s> :w<cr>
-imap <c-s> <Esc>:w<CR>a
-
+imap <c-s> <Esc>:w<CR>
 "--Plugins---"
 "/CtrlP
 set grepprg=ag
 let g:grep_cmd_opts = '--line-numbers --noheading'
 let g:ctrlp_show_hidden = 1
 
-nmap <c-R> :CtrlPBufTag<cr>
+"nmap <c-R> :CtrlPBufTag<cr>
 nmap <Leader>r :CtrlPMRUFiles<cr>
 
+"/syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_php_checkers = ['php']
 
 "/NerdTree
 let NERDTreeHijackNetrw = 0
