@@ -17,7 +17,7 @@ set laststatus=2 "set statusline on
 "---Visuals---"
 set background=dark
 colorscheme atom-dark-256
-hi StatusLine ctermbg=black ctermfg=white
+hi StatusLine ctermbg=black ctermfg=black
 "---Mappings---"
 
 "Make it easy to edit Vimrc file"
@@ -29,24 +29,26 @@ nmap <Leader><space> :nohlsearch<cr>
 
 nmap <Leader>f :tag<space>
 nmap <c-_> <c-^>
+nmap <Leader>/ <c-^>
 nmap <Leader>es :tabedit ~/.vim/snippets/
 imap <S-Tab> <C-d>
 nmap <c-s> :w<cr>
 imap <c-s> <Esc>:w<CR>
-
 "--Plugins---"
 "/CtrlP
 set grepprg=ag
 let g:grep_cmd_opts = '--line-numbers --noheading'
 let g:ctrlp_show_hidden = 1
-
+let g:ctrlp_match_window = 'top,order:btt,min:1,max:70,results:100'
 "nmap <c-R> :CtrlPBufTag<cr>
 nmap <Leader>r :CtrlPMRUFiles<cr>
-
+nmap <Leader>pl <C-P><C-\>w
+nmap <Leader>m /public\\|private\\|protected<CR>
 "/syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+nmap <Leader>sr :SyntasticReset<CR>
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -133,3 +135,7 @@ endif
 "----Notes----"
 " press zz to center
 " press gt or gT to change tabs 
+"
+" If you can't use universal-ctags, the --regex-php argument allows to extract traits:
+" ctags -R --exclude=vendor --PHP-kinds=cfi --regex-php="/^[ \t]*trait[ \t]+([a-z0_9_]+)/\1/t,traits/i"
+
