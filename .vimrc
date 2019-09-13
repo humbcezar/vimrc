@@ -73,6 +73,12 @@ nnoremap <silent><leader>p :call PhpCsFixerFixFile()<CR>
 let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
 nnoremap <Leader>d :call pdv#DocumentWithSnip()<CR>
 
+
+"/phpcd
+imap <Leader>c <c-x><c-o>
+
+
+
 "--Searching---"
 
 set hlsearch
