@@ -24,6 +24,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'lvht/phpcd.vim'
 Plugin 'ervandew/supertab'
+Plugin 'leafgarland/typescript-vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
