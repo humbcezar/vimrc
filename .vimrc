@@ -23,7 +23,7 @@ hi StatusLine ctermbg=black ctermfg=black
 "Make it easy to edit Vimrc file"
 nmap <Leader>ev :tabedit $MYVIMRC<cr>
 "Make it easy to edit Vimplugin file"
-nmap <Leader>ep :tabedit ~/.vim/plugins.vim<cr>
+nmap <Leader>epp :tabedit ~/.vim/plugins.vim<cr>
 "add highlight removal"
 nmap <Leader><space> :nohlsearch<cr>
 
@@ -43,7 +43,7 @@ let g:ctrlp_match_window = 'top,order:btt,min:1,max:70,results:100'
 "nmap <c-R> :CtrlPBufTag<cr>
 nmap <Leader>r :CtrlPMRUFiles<cr>
 nmap <Leader>pl <C-P><C-\>w
-nmap <Leader>m /public\\|private\\|protected<CR>
+nmap <Leader>m /function<CR>
 "/syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -52,9 +52,17 @@ nmap <Leader>sr :SyntasticReset<CR>
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
+let g:syntastic_loc_list_height = 3 
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_php_checkers = ['php']
+let g:syntastic_php_phpmd_exec = '/usr/bin/phpmd'
+let g:syntastic_php_phpmd_post_args = 'cleancode,codesize,controversial,design,unusedcode'
+let g:syntastic_php_checkers = ['php', 'phpmd']
+let g:syntastic_quiet_messages = { 'regex': [
+            \'Avoid using static access',
+            \
+            \ ] }
+
 
 "/NerdTree
 let NERDTreeHijackNetrw = 0
@@ -77,6 +85,9 @@ nnoremap <Leader>d :call pdv#DocumentWithSnip()<CR>
 "/phpcd
 imap <Leader>c <c-x><c-o>
 
+
+"/ refactoring-browser
+let g:vim_php_refactoring_make_setter_fluent = 2
 
 
 "--Searching---"
