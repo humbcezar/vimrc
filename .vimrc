@@ -44,6 +44,7 @@ let g:ctrlp_match_window = 'top,order:btt,min:1,max:70,results:100'
 nmap <Leader>r :CtrlPMRUFiles<cr>
 nmap <Leader>pl <C-P><C-\>w
 nmap <Leader>m /function<CR>zz
+nmap <Leader>g <C-P><C-\>w
 nmap n nzz
 "/syntastic
 set statusline+=%#warningmsg#
