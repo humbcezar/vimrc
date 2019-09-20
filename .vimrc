@@ -43,7 +43,8 @@ let g:ctrlp_match_window = 'top,order:btt,min:1,max:70,results:100'
 "nmap <c-R> :CtrlPBufTag<cr>
 nmap <Leader>r :CtrlPMRUFiles<cr>
 nmap <Leader>pl <C-P><C-\>w
-nmap <Leader>m /function<CR>
+nmap <Leader>m /function<CR>zz
+nmap n nzz
 "/syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -53,15 +54,17 @@ nmap <Leader>sr :SyntasticReset<CR>
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_loc_list_height = 3 
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_php_phpmd_exec = '/usr/bin/phpmd'
 let g:syntastic_php_phpmd_post_args = 'cleancode,codesize,controversial,design,unusedcode'
 let g:syntastic_php_checkers = ['php', 'phpmd']
 let g:syntastic_quiet_messages = { 'regex': [
             \'Avoid using static access',
-            \
-            \ ] }
+            \'has a coupling between objects value',
+            \'Single Responsibility Principle violation',
+            \'Avoid really long methods',
+            \'Avoid really long classes'] }
 
 
 "/NerdTree
@@ -89,6 +92,14 @@ imap <Leader>c <c-x><c-o>
 "/ refactoring-browser
 let g:vim_php_refactoring_make_setter_fluent = 2
 
+"/ Ack
+
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+endif
+" Automatically open & close quickfix window
+autocmd QuickFixCmdPost [^l]* nested cwindow
+
 
 "--Searching---"
 
@@ -112,10 +123,9 @@ nmap <C-L> <C-W><C-L>
 
 nmap <Leader>lm :!php artisan make:
 
-
 "-----PHP-macros------"
 let @a='yiw/}O$	pa = $pa;/__constructOprotected $pa;/", ' "assign protected property to class on constructor
-
+let @m="A::shouldReceive()\<CR>->once()\<CR>->with()\<CR>->andReturnSelf();\<Esc>" "shouldReceive...
 
 "---AutoCommands---"
 
@@ -148,6 +158,31 @@ if has("autocmd")
         " parse special text in the templates after the read
     augroup END
 endif
+
+"https://engagor.github.io/blog/2017/02/15/vim-ide-exploring-code/
+"
+"
+"
+" PHP Find Implementations
+function! PhpImplementations(word)
+    exe 'Ack "implements.*' . a:word . ' *($|{)"'
+endfunction
+
+" PHP Find Subclasses
+function! PhpSubclasses(word)
+    exe 'Ack "extends.*' . a:word . ' *($|{)"'
+endfunction
+
+noremap <Leader>fi :call PhpImplementations('<cword>')<CR>
+noremap <Leader>fe :call PhpSubclasses('<cword>')<CR>
+
+" PHP Find Usage
+function! PhpUsage(word)
+    exe 'Ack "::' . a:word . '\(|>' . a:word . '\("'
+endfunction
+
+noremap <Leader>fu :call PhpUsage('<cword>')<CR>
+
 
 "----Notes----"
 " press zz to center

@@ -27,6 +27,7 @@ Plugin 'ervandew/supertab'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'adoy/vim-php-refactoring-toolbox'
+Plugin 'mileszs/ack.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
