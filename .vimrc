@@ -78,7 +78,7 @@ nmap <Leader>1 :NERDTreeToggle<cr>
 
 "/Greplace.vim
 set grepprg=ag
-let g:grep_cmd_opts = '--line-numbers --noheading --ignore-dir vendor'
+let g:grep_cmd_opts = '--line-numbers --noheading'
 
 "/Vim-php-cs-fixer
 let g:php_cs_fixer_level = "psr2"
