@@ -28,8 +28,8 @@ snippet try
 
 snippet $
 	$this->
-
-
+snippet witho
+	$this->withoutExceptionHandling();
 snippet c
 	public function __construct(${1})
 	{
@@ -45,9 +45,16 @@ snippet rp
 	Route::post('${1}', '${2}');
 	
 
+
 snippet ru
 	Route::put('${1}', '${2}');
 
 
 snippet rd
 	Route::delete('${1}', '${2}');
+snippet ct
+	->create(['tenant_id' => $this->tenant->id]);
+snippet [
+	[${1}]
+snippet {
+	{${1}}
