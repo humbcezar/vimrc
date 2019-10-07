@@ -45,7 +45,9 @@ nmap <Leader>r :CtrlPMRUFiles<cr>
 nmap <Leader>pl <C-P><C-\>w
 nmap <Leader>m /function<CR>zz
 nmap <Leader>g <C-P><C-\>w
+vmap <Leader>g y<Esc><C-P><C-\>r"<CR>
 nmap n nzz
+
 "/syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -64,6 +66,7 @@ let g:syntastic_quiet_messages = { 'regex': [
             \'Avoid using static access',
             \'has a coupling between objects value',
             \'Single Responsibility Principle violation',
+            \'Avoid unused parameters',
             \'Avoid really long methods',
             \'Avoid really long classes'] }
 
@@ -183,6 +186,13 @@ function! PhpUsage(word)
 endfunction
 
 noremap <Leader>fu :call PhpUsage('<cword>')<CR>
+
+"functions
+"copy filename to clipboard
+function! FilenameToClipboard()
+    let @+=@%
+endfunction
+nmap <C-F> :call FilenameToClipboard()<CR>
 
 
 "----Notes----"
