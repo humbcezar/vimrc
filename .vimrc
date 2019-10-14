@@ -194,6 +194,15 @@ function! FilenameToClipboard()
 endfunction
 nmap <C-F> :call FilenameToClipboard()<CR>
 
+function! NumberToggle()
+    if(&relativenumber == 1)
+      set norelativenumber
+    else
+        set relativenumber
+    endif
+endfunc
+nnoremap <leader>nt :call NumberToggle()<cr>
+
 
 "----Notes----"
 " press zz to center
