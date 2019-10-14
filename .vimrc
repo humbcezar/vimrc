@@ -19,6 +19,7 @@ set background=dark
 colorscheme atom-dark-256
 hi StatusLine ctermbg=black ctermfg=black
 "---Mappings---"
+let g:camelcasemotion_key = '<leader>'
 
 "Make it easy to edit Vimrc file"
 nmap <Leader>ev :tabedit $MYVIMRC<cr>

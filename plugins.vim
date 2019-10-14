@@ -32,6 +32,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-line'
+Plugin 'bkad/CamelCaseMotion'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
