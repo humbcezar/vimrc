@@ -27,6 +27,11 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'adoy/vim-php-refactoring-toolbox'
 Plugin 'mileszs/ack.vim'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-commentary'
+Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'kana/vim-textobj-user'
+Plugin 'kana/vim-textobj-line'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
