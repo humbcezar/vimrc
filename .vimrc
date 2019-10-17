@@ -107,6 +107,12 @@ endif
 " Automatically open & close quickfix window
 autocmd QuickFixCmdPost [^l]* nested cwindow
 
+"undotree
+nnoremap <F5> :UndotreeToggle<cr>
+set undodir=~/.vim/undodir
+set undofile
+set undolevels=1000
+set undoreload=10000
 
 "--Searching---"
 

@@ -33,6 +33,7 @@ Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-line'
 Plugin 'bkad/CamelCaseMotion'
+Plugin 'mbbill/undotree'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
