@@ -98,6 +98,7 @@ nmap <silent> <leader>t :History<CR>
 nmap <silent> <leader>b :Buffers<CR>
 nmap <silent> <leader>l :BLines<CR>
 imap <silent> <F3> <ESC>:Snippets<CR>
+nmap <silent> <leader>h :GFiles?<CR>
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
