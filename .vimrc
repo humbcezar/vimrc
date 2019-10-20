@@ -39,6 +39,7 @@ nmap <c-s> :w<cr>
 imap <c-s> <Esc>:w<CR>
 nmap <Leader>m /function<CR>zz
 nmap n nzz
+vnoremap * y/<c-r>0<CR>
 
 "FuzzyFinder
 set rtp+=~/.fzf
