@@ -13,6 +13,8 @@ set expandtab
 set autowriteall "automatically write on switching buffers
 set complete=.,w,b,u "set auto completions
 set showtabline=2
+set ignorecase
+set smartcase
 
 "---Visuals---"
 set background=dark
