@@ -15,6 +15,7 @@ set complete=.,w,b,u "set auto completions
 set showtabline=2
 set ignorecase
 set smartcase
+set cursorline
 
 "---Visuals---"
 set background=dark
@@ -31,6 +32,8 @@ nmap <Leader>ev :tabedit $MYVIMRC<cr>
 nmap <Leader>epp :tabedit ~/.vim/plugins.vim<cr>
 "add highlight removal"
 nmap <Leader><space> :nohlsearch<cr>
+imap jk <esc>l
+nnoremap <leader>y "+yiw
 
 nmap <Leader>f :tag<space>
 nmap <c-_> <c-^>
@@ -156,6 +159,8 @@ let g:syntastic_quiet_messages = { 'regex': [
 let NERDTreeHijackNetrw = 0
 "make nerdtree easier to toggle"
 nmap <Leader>1 :NERDTreeToggle<cr>
+nmap <leader>2 :NERDTreeFind<CR>
+
 
 "/Greplace.vim
 set grepprg=ag
@@ -183,8 +188,10 @@ if executable('ag')
     let g:ackprg = 'ag --vimgrep'
 endif
 " Automatically open & close quickfix window
-autocmd QuickFixCmdPost [^l]* nested cwindow
-
+augroup ack
+    autocmd!
+    autocmd QuickFixCmdPost [^l]* nested cwindow
+augroup END
 "undotree
 nnoremap <F5> :UndotreeToggle<cr>
 set undodir=~/.vim/undodir
@@ -229,15 +236,19 @@ function! IPhpInsertUse()
     call PhpInsertUse()
     call feedkeys('a',  'n')
 endfunction
-autocmd FileType php inoremap <Leader>n <Esc>:call IPhpInsertUse()<CR>
-autocmd FileType php noremap <Leader>n :call PhpInsertUse()<CR>
-
 function! IPhpExpandClass()
     call PhpExpandClass()
     call feedkeys('a', 'n')
 endfunction
-autocmd FileType php inoremap <Leader>nf <Esc>:call IPhpExpandClass()<CR>
-autocmd FileType php noremap <Leader>nf :call PhpExpandClass()<CR>
+
+augroup php
+    autocmd!
+    autocmd FileType php inoremap <Leader>n <Esc>:call IPhpInsertUse()<CR>
+    autocmd FileType php noremap <Leader>n :call PhpInsertUse()<CR>
+    autocmd FileType php inoremap <Leader>nf <Esc>:call IPhpExpandClass()<CR>
+    autocmd FileType php noremap <Leader>nf :call PhpExpandClass()<CR>
+augroup END
+
 
 if has("autocmd")
     augroup templates
