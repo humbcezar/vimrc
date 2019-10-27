@@ -195,6 +195,16 @@ set undofile
 set undolevels=1000
 set undoreload=10000
 
+""pymode
+
+let g:pymode_rope = 1
+let g:pymode_rope_autoimport=1
+let g:pymode_rope_autoimport_modules = ['os', 'shutil', 'datetime', 'django.*']
+let g:pymode_rope_completion = 1
+let g:pymode_rope_goto_definition_bind = '<C-]>'
+let g:pymode_rope_completion_bind = '<leader>c'
+
+
 "--Searching---"
 
 set hlsearch
