@@ -42,7 +42,6 @@ nmap <Leader>es :tabedit ~/.vim/snippets/
 imap <S-Tab> <C-d>
 nmap <c-s> :w<cr>
 imap <c-s> <Esc>:w<CR>
-nmap <Leader>m /function<CR>zz
 nmap n nzz
 vnoremap * y/<c-r>0<CR>
 
@@ -168,15 +167,12 @@ let g:grep_cmd_opts = '--line-numbers --noheading'
 
 "/Vim-php-cs-fixer
 let g:php_cs_fixer_level = "psr2"
-nnoremap <silent><leader>p :call PhpCsFixerFixFile()<CR>
 
 "/pdv
 let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
 nnoremap <Leader>d :call pdv#DocumentWithSnip()<CR>
 
 
-"/phpcd
-imap <Leader>c <c-x><c-o>
 
 
 "/ refactoring-browser
@@ -247,6 +243,10 @@ augroup php
     autocmd FileType php noremap <Leader>n :call PhpInsertUse()<CR>
     autocmd FileType php inoremap <Leader>nf <Esc>:call IPhpExpandClass()<CR>
     autocmd FileType php noremap <Leader>nf :call PhpExpandClass()<CR>
+    autocmd FileType php nmap <Leader>m /function<CR>zz
+    "/phpcd
+    autocmd FileType php imap <Leader>c <c-x><c-o>
+    autocmd FileType php nnoremap <silent><leader>p :call PhpCsFixerFixFile()<CR>
 augroup END
 
 
