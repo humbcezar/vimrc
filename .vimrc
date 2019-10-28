@@ -24,6 +24,19 @@ hi StatusLine ctermbg=black ctermfg=black
 set relativenumber
 
 "---Mappings---"
+
+"portuguese marks
+imap `c ç
+imap `e é
+imap `a á
+imap `i í
+imap `o ó
+imap `u ú
+imap ``a ã
+imap ``e ẽ
+imap ``o õ
+
+
 let g:camelcasemotion_key = '<leader>'
 
 "Make it easy to edit Vimrc file"
@@ -33,7 +46,7 @@ nmap <Leader>epp :tabedit ~/.vim/plugins.vim<cr>
 "add highlight removal"
 nmap <Leader><space> :nohlsearch<cr>
 imap jk <esc>l
-nnoremap <leader>y "+yiw
+nnoremap <leader>y "+y
 
 nmap <Leader>f :tag<space>
 nmap <c-_> <c-^>
@@ -253,7 +266,7 @@ augroup php
     autocmd FileType php noremap <Leader>n :call PhpInsertUse()<CR>
     autocmd FileType php inoremap <Leader>nf <Esc>:call IPhpExpandClass()<CR>
     autocmd FileType php noremap <Leader>nf :call PhpExpandClass()<CR>
-    autocmd FileType php nmap <Leader>m /function<CR>zz
+    autocmd FileType php nmap <Leader>m /function<CR>zz:nohlsearch<cr>
     "/phpcd
     autocmd FileType php imap <Leader>c <c-x><c-o>
     autocmd FileType php nnoremap <silent><leader>p :call PhpCsFixerFixFile()<CR>
