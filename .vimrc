@@ -36,6 +36,11 @@ imap ``a ã
 imap ``e ẽ
 imap ``o õ
 
+"" context aware completion
+imap <leader>p <C-x><C-p>
+"" context aware completion by line
+imap <leader>o <C-x><C-l>
+
 
 let g:camelcasemotion_key = '<leader>'
 
