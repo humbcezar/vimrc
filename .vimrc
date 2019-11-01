@@ -171,6 +171,8 @@ let g:syntastic_quiet_messages = { 'regex': [
             \'Avoid really long methods',
             \'Avoid really long classes'] }
 
+let g:tsuquyomi_disable_quickfix = 1
+let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
 
 "/NerdTree
 let NERDTreeHijackNetrw = 0
@@ -246,7 +248,7 @@ nmap <C-L> <C-W><C-L>
 nmap <Leader>lm :!php artisan make:
 
 "-----PHP-macros------"
-let @a='yiw/}O$	pa = $pa;/__constructOprotected $pa;/", ' "assign protected property to class on constructor
+let @a = "yiw/}\<CR>O$this->\<Esc>pa = $\<Esc>pa;\<Esc>/class\<CR>ggnjjoprotected $\<Esc>pa;\<Esc>h\,d" "assign protected property to class on constructor
 let @m="A::shouldReceive()\<CR>->once()\<CR>->with()\<CR>->andReturnSelf();\<Esc>" "shouldReceive...
 
 "---AutoCommands---"
@@ -267,8 +269,8 @@ endfunction
 
 augroup php
     autocmd!
-    autocmd FileType php inoremap <Leader>n <Esc>:call IPhpInsertUse()<CR>
-    autocmd FileType php noremap <Leader>n :call PhpInsertUse()<CR>
+    autocmd FileType php inoremap <Leader>nn <Esc>:call IPhpInsertUse()<CR>
+    autocmd FileType php noremap <Leader>nn :call PhpInsertUse()<CR>
     autocmd FileType php inoremap <Leader>nf <Esc>:call IPhpExpandClass()<CR>
     autocmd FileType php noremap <Leader>nf :call PhpExpandClass()<CR>
     autocmd FileType php nmap <Leader>m /function<CR>zz:nohlsearch<cr>
