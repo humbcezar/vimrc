@@ -147,24 +147,19 @@ inoremap <expr> <leader>; fzf#vim#complete(fzf#wrap({
   \ 'options': '--multi --ansi --delimiter : --nth 3..',
   \ 'reducer': function('<sid>concat_lines')}))
 
-function! Append(line)
+function! s:append(line)
     let parsed_line = join(split(a:line, '[:-]\zs')[2:], '')
     set paste
     execute "normal! o" . parsed_line
     set nopaste
 endfunction
 
-function! s:runwrapper()
-    call SyntasticToggleMode()
-    let r = fzf#run({
+" contextual complete line wise
+inoremap <leader><leader> <esc>:call fzf#run({
       \ 'source': 'rg -n ' . shellescape(escape(getline('.'), '$')) . ' --color always -A 5',
       \ 'options': '--multi --ansi --delimiter : --nth 3..',
-      \ 'sink': function('Append')
-  \ })
-    call SyntasticToggleMode()
-endfunction
-
-inoremap <leader><leader> <esc>:call <sid>runwrapper()<cr>
+      \ 'sink': function('<sid>append')
+  \ })<cr>
 
 
 "/syntastic
