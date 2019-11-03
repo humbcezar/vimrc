@@ -149,15 +149,14 @@ inoremap <expr> <leader>; fzf#vim#complete(fzf#wrap({
 
 function! s:append(line)
     let parsed_line = join(split(a:line, '[:-]\zs')[2:], '')
-    set paste
     execute "normal! o" . parsed_line
-    set nopaste
 endfunction
 
+let rgescape_chars = '$[](){}*\?'
 " contextual complete line wise
 inoremap <leader><leader> <esc>:call fzf#run({
-      \ 'source': 'rg -n ' . shellescape(escape(getline('.'), '$')) . ' --color always -A 5',
-      \ 'options': '--multi --ansi --delimiter : --nth 3..',
+      \ 'source': 'rg -n ' . shellescape(escape(getline('.'), rgescape_chars)) . ' --color always -A 5 --trim',
+      \ 'options': '--multi --ansi --delimiter : --nth 3.. --layout=reverse',
       \ 'sink': function('<sid>append')
   \ })<cr>
 
