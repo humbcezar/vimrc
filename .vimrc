@@ -147,12 +147,27 @@ inoremap <expr> <leader>; fzf#vim#complete(fzf#wrap({
   \ 'options': '--multi --ansi --delimiter : --nth 3..',
   \ 'reducer': function('<sid>concat_lines')}))
 
+function! Append(line)
+    let parsed_line = join(split(a:line, '[:-]\zs')[2:], '')
+    set paste
+    execute "normal! o" . parsed_line
+    set nopaste
+endfunction
+
+function! s:runwrapper()
+    call SyntasticToggleMode()
+    let r = fzf#run({
+      \ 'source': 'rg -n ' . shellescape(escape(getline('.'), '$')) . ' --color always -A 5',
+      \ 'options': '--multi --ansi --delimiter : --nth 3..',
+      \ 'sink': function('Append')
+  \ })
+    call SyntasticToggleMode()
+endfunction
+
+inoremap <leader><leader> <esc>:call <sid>runwrapper()<cr>
 
 
 "/syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 nmap <Leader>sr :SyntasticReset<CR>
 
 let g:syntastic_always_populate_loc_list = 1
