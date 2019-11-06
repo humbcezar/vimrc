@@ -3,6 +3,8 @@ so ~/.vim/plugins.vim
 
 syntax enable
 
+set swapfile
+set dir=~/tmp
 set backspace=indent,eol,start
 let mapleader  = ','
 set number
@@ -67,7 +69,7 @@ vnoremap * y/<c-r>0<CR>
 set rtp+=~/.fzf
 let g:rg_command = '
   \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
-  \ -g "*.{js,json,php}"
+  \ -g "*.{js,json,php,ts}"
   \ -g "!{.git,node_modules}/*" '
 
 command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
@@ -181,6 +183,7 @@ let g:syntastic_quiet_messages = { 'regex': [
             \'Avoid really long classes'] }
 
 let g:tsuquyomi_disable_quickfix = 1
+let g:tsuquyomi_shortest_import_path = 1
 let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
 
 "/NerdTree
@@ -259,7 +262,8 @@ nmap <Leader>lm :!php artisan make:
 "-----PHP-macros------"
 let @a = "yiw/}\<CR>O$this->\<Esc>pa = $\<Esc>pa;\<Esc>/class\<CR>ggnjjoprotected $\<Esc>pa;\<Esc>h\,d" "assign protected property to class on constructor
 let @m="A::shouldReceive()\<CR>->once()\<CR>->with()\<CR>->andReturnSelf();\<Esc>" "shouldReceive...
-
+let @t = ":e tests/TestCase.php\<cr>/use RefreshDatabase\<cr>gcl\<C-o>\<C-o>"
+let @f = "*BiFacades\\\<esc>nn" "facadeify namespace
 "---AutoCommands---"
 
 augroup autosourcing
@@ -288,6 +292,11 @@ augroup php
     autocmd FileType php nnoremap <silent><leader>p :call PhpCsFixerFixFile()<CR>
 augroup END
 
+augroup typescript
+    autocmd!
+    autocmd FileType typescript inoremap <Leader>nn <Esc>:TsuImport<CR>
+    autocmd FileType typescript nnoremap <Leader>nn <Esc>:TsuImport<CR>
+augroup END
 
 if has("autocmd")
     augroup templates
