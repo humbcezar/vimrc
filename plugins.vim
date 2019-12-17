@@ -31,13 +31,12 @@ Plugin 'tpope/vim-commentary'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-line'
-Plugin 'bkad/CamelCaseMotion'
 Plugin 'mbbill/undotree'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'python-mode/python-mode'
-Plugin 'ludovicchabant/vim-gutentags'
-Plugin 'Quramy/tsuquyomi'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'alvan/vim-php-manual'
 
 call vundle#end()            " required
 filetype plugin indent on    " required

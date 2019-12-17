@@ -44,8 +44,6 @@ imap <leader>p <C-x><C-p>
 imap <leader>o <C-x><C-l>
 
 
-let g:camelcasemotion_key = '<leader>'
-
 "Make it easy to edit Vimrc file"
 nmap <Leader>ev :tabedit $MYVIMRC<cr>
 "Make it easy to edit Vimplugin file"
@@ -65,11 +63,35 @@ imap <c-s> <Esc>:w<CR>
 nmap n nzz
 vnoremap * y/<c-r>0<CR>
 
+"Easymotion
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+" Jump to anywhere you want with minimal keystrokes, with just one key
+" binding.
+" `a{char}{char}{label}`
+nmap <Leader>a <Plug>(easymotion-overwin-f2)
+" Turn on case-insensitive feature
+let g:EasyMotion_smartcase = 1
+" JK motions: Line motions
+nmap <Leader>j <Plug>(easymotion-j)
+nmap <Leader>k <Plug>(easymotion-k)
+nnoremap <Leader>f f
+nnoremap <Leader>F F
+onoremap <Leader>f f
+onoremap <Leader>F F
+nmap f <Plug>(easymotion-f)
+nmap F <Plug>(easymotion-F)
+omap f <Plug>(easymotion-f)
+omap F <Plug>(easymotion-F)
+omap t <Plug>(easymotion-t)
+omap T <Plug>(easymotion-T)
+nmap <Leader>w <Plug>(easymotion-w)
+nmap <Leader>b <Plug>(easymotion-b)
+
 "FuzzyFinder
 set rtp+=~/.fzf
 let g:rg_command = '
   \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
-  \ -g "*.{js,json,php,ts}"
+  \ -g "*.{js,json,php,ts,html}"
   \ -g "!{.git,node_modules}/*" '
 
 command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
@@ -120,7 +142,6 @@ let g:fzf_commands_expect = 'alt-entertrl-x'
 
 nmap <silent> <leader>o :Files<CR>
 nmap <silent> <leader>t :History<CR>
-nmap <silent> <leader>b :Buffers<CR>
 nmap <silent> <leader>l :BLines<CR>
 imap <silent> <F3> <ESC>:Snippets<CR>
 nmap <silent> <leader>h :GFiles?<CR>
@@ -132,9 +153,6 @@ imap <leader><tab> <plug>(fzf-maps-i)
 " Insert mode completion
 imap <leader>w  <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <leader>f <plug>(fzf-complete-file-ag)
-imap <leader>l <plug>(fzf-complete-line)
-imap <leader>b <plug>(fzf-complete-buffer-line)
 
 function! s:concat_lines(lines)
     let r = []
@@ -182,9 +200,9 @@ let g:syntastic_quiet_messages = { 'regex': [
             \'Avoid really long methods',
             \'Avoid really long classes'] }
 
-let g:tsuquyomi_disable_quickfix = 1
-let g:tsuquyomi_shortest_import_path = 1
-let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
+" let g:tsuquyomi_disable_quickfix = 1
+" let g:tsuquyomi_shortest_import_path = 1
+" let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
 
 "/NerdTree
 let NERDTreeHijackNetrw = 0
@@ -199,6 +217,9 @@ let g:grep_cmd_opts = '--line-numbers --noheading'
 
 "/Vim-php-cs-fixer
 let g:php_cs_fixer_level = "psr2"
+
+"/php man
+let g:php_manual_online_search_shortcut = ''
 
 "/pdv
 let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
@@ -266,6 +287,17 @@ let @t = ":e tests/TestCase.php\<cr>/use RefreshDatabase\<cr>gcl\<C-o>\<C-o>"
 let @f = "*BiFacades\\\<esc>nn" "facadeify namespace
 "---AutoCommands---"
 
+if has("autocmd")
+  au VimEnter,InsertLeave * silent execute '!echo -ne "\e[2 q"' | redraw!
+  au InsertEnter,InsertChange *
+    \ if v:insertmode == 'i' | 
+    \   silent execute '!echo -ne "\e[6 q"' | redraw! |
+    \ elseif v:insertmode == 'r' |
+    \   silent execute '!echo -ne "\e[4 q"' | redraw! |
+    \ endif
+  au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
+endif
+
 augroup autosourcing
 	autocmd!
 	autocmd BufWritePost .vimrc source %
@@ -292,11 +324,11 @@ augroup php
     autocmd FileType php nnoremap <silent><leader>p :call PhpCsFixerFixFile()<CR>
 augroup END
 
-augroup typescript
-    autocmd!
-    autocmd FileType typescript inoremap <Leader>nn <Esc>:TsuImport<CR>
-    autocmd FileType typescript nnoremap <Leader>nn <Esc>:TsuImport<CR>
-augroup END
+" augroup typescript
+"     autocmd!
+"     autocmd FileType typescript inoremap <Leader>nn <Esc>:TsuImport<CR>
+"     autocmd FileType typescript nnoremap <Leader>nn <Esc>:TsuImport<CR>
+" augroup END
 
 if has("autocmd")
     augroup templates
