@@ -333,7 +333,8 @@ augroup END
 " augroup END
 
 augroup python
-    nmap <Leader>nn :ImportName<CR>
+    autocmd!
+    autocmd FileType python nmap <Leader>nn :ImportName<CR>
 augroup END
 
 if has("autocmd")
