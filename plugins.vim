@@ -35,8 +35,9 @@ Plugin 'mbbill/undotree'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'python-mode/python-mode'
-Plugin 'easymotion/vim-easymotion'
 Plugin 'alvan/vim-php-manual'
+Plugin 'tmhedberg/matchit'
+Plugin 'mgedmin/python-imports.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
