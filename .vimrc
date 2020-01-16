@@ -45,7 +45,7 @@ imap <leader>o <C-x><C-l>
 
 
 "Make it easy to edit Vimrc file"
-nmap <Leader>ev :tabedit $MYVIMRC<cr>
+nmap <Leader>ev :tabedit ~/.vimrc<cr>
 "Make it easy to edit Vimplugin file"
 nmap <Leader>epp :tabedit ~/.vim/plugins.vim<cr>
 "add highlight removal"
@@ -258,6 +258,7 @@ let g:pymode_rope_completion = 1
 let g:pymode_rope_goto_definition_bind = '<C-]>'
 let g:pymode_rope_completion_bind = '<leader>c'
 let g:pymode_rope_complete_on_dot = 0
+let g:pymode_rope_goto_definition_cmd = 'e'
 
 "--Searching---"
 
@@ -388,41 +389,6 @@ function! NumberToggle()
 endfunc
 nnoremap <leader>nt :call NumberToggle()<cr>
 
-function! MyTabLine()
-      let s = ''
-      for i in range(tabpagenr('$'))
-        " select the highlighting
-        if i + 1 == tabpagenr()
-          let s .= '%#TabLineSel#'
-        else
-          let s .= '%#TabLine#'
-        endif
-
-        " set the tab page number (for mouse clicks)
-        let s .= '%' . (i + 1) . 'T'
-
-        " the label is made by MyTabLabel()
-        let s .= ' %{MyTabLabel(' . (i + 1) . ')} '
-      endfor
-
-      " after the last tab fill with TabLineFill and reset tab page nr
-      let s .= '%#TabLineFill#%T'
-
-      " right-align the label to close the current tab page
-      if tabpagenr('$') > 1
-        let s .= '%=%#TabLine#%999Xclose'
-      endif
-
-      return s
-    endfunction
-
-    function! MyTabLabel(n)
-      let buflist = tabpagebuflist(a:n)
-      let winnr = tabpagewinnr(a:n)
-      return bufname(buflist[winnr - 1])
-    endfunction
-
-set tabline=%!MyTabLine()
 
 "----Notes----"
 " press zz to center
