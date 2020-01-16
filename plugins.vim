@@ -38,6 +38,9 @@ Plugin 'python-mode/python-mode'
 Plugin 'alvan/vim-php-manual'
 Plugin 'tmhedberg/matchit'
 Plugin 'mgedmin/python-imports.vim'
+Plugin 'ludovicchabant/vim-gutentags'
+Plugin 'Quramy/tsuquyomi'
+Plugin 'vim-vdebug/vdebug'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
