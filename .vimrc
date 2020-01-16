@@ -252,13 +252,17 @@ set undoreload=10000
 ""pymode
 
 let g:pymode_rope = 1
-let g:pymode_rope_autoimport=1
+let g:pymode_rope_autoimport=0
 let g:pymode_rope_autoimport_modules = ['os', 'shutil', 'datetime', 'django.*']
 let g:pymode_rope_completion = 1
 let g:pymode_rope_goto_definition_bind = '<C-]>'
 let g:pymode_rope_completion_bind = '<leader>c'
 let g:pymode_rope_complete_on_dot = 0
 let g:pymode_rope_goto_definition_cmd = 'e'
+let g:pymode_rope_regenerate_on_write = 0
+"Now, when I want to generate the cache, I just use
+" :PymodeRopeRegenerate
+
 
 "--Searching---"
 
