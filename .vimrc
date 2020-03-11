@@ -25,6 +25,10 @@ colorscheme atom-dark-256
 hi StatusLine ctermbg=black ctermfg=black
 set relativenumber
 
+"---Folding----"
+setlocal foldmethod=indent
+set foldlevel=99
+
 "---Mappings---"
 
 "portuguese marks
@@ -218,6 +222,10 @@ nmap <leader>2 :NERDTreeFind<CR>
 "/Greplace.vim
 set grepprg=ag
 let g:grep_cmd_opts = '--line-numbers --noheading'
+
+"/tagbar
+let g:tagbar_vertical = 20
+nmap <F8> :TagbarToggle<CR>
 
 "/Vim-php-cs-fixer
 let g:php_cs_fixer_level = "psr2"

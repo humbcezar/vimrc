@@ -38,6 +38,7 @@ Plugin 'alvan/vim-php-manual'
 Plugin 'tmhedberg/matchit'
 Plugin 'mgedmin/python-imports.vim'
 Plugin 'Quramy/tsuquyomi'
+Plugin 'majutsushi/tagbar'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
