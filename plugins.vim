@@ -18,7 +18,6 @@ Plugin 'arnaud-lb/vim-php-namespace'
 Plugin 'stephpy/vim-php-cs-fixer'
 Plugin 'tobyS/vmustache'
 Plugin 'tobyS/pdv'
-Plugin 'SirVer/ultisnips'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'lvht/phpcd.vim'
 Plugin 'ervandew/supertab'
@@ -38,9 +37,7 @@ Plugin 'python-mode/python-mode'
 Plugin 'alvan/vim-php-manual'
 Plugin 'tmhedberg/matchit'
 Plugin 'mgedmin/python-imports.vim'
-Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'Quramy/tsuquyomi'
-Plugin 'vim-vdebug/vdebug'
 
 call vundle#end()            " required
 filetype plugin indent on    " required

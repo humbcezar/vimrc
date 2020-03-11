@@ -62,6 +62,8 @@ nmap <c-s> :w<cr>
 imap <c-s> <Esc>:w<CR>
 nmap n nzz
 vnoremap * y/<c-r>0<CR>
+vnoremap <Leader>fo y:F <c-r>0<CR>
+nnoremap <Leader>fo yiw:F <c-r>0<CR>
 
 "Easymotion
 " let g:EasyMotion_do_mapping = 0 " Disable default mappings
@@ -87,6 +89,7 @@ vnoremap * y/<c-r>0<CR>
 " nmap <Leader>w <Plug>(easymotion-w)
 " nmap <Leader>b <Plug>(easymotion-b)
 
+" let g:UltiSnipsUsePythonVersion = 2
 
 "FuzzyFinder
 set rtp+=~/.fzf
@@ -260,7 +263,7 @@ let g:pymode_rope_completion_bind = '<leader>c'
 let g:pymode_rope_complete_on_dot = 0
 let g:pymode_rope_goto_definition_cmd = 'e'
 let g:pymode_rope_regenerate_on_write = 0
-"Now, when I want to generate the cache, I just use
+""Now, when I want to generate the cache, I just use
 " :PymodeRopeRegenerate
 
 
@@ -340,6 +343,18 @@ augroup END
 augroup python
     autocmd!
     autocmd FileType python nmap <Leader>nn :ImportName<CR>
+    autocmd FileType python nmap <Leader>m /def .<CR>
+    autocmd FileType python nmap <Leader>j /class .<CR>
+    autocmd FileType python nmap <Leader>pr :PymodeRopeRegenerate<CR> 
+    "jedi
+    " let g:jedi#force_py_version = 2.7
+    " let g:jedi#goto_command = "<C-]>"
+    " let g:jedi#goto_assignments_command = "<leader>g"
+    " let g:jedi#goto_definitions_command = "<C-]>"
+    " let g:jedi#documentation_command = "K"
+    " let g:jedi#usages_command = "<leader>n"
+    " let g:jedi#completions_command = "<leader>c"
+    " let g:jedi#rename_command = "<leader>r"
 augroup END
 
 if has("autocmd")
